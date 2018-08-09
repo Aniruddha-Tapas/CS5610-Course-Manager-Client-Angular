@@ -1,0 +1,142 @@
+<div class="mb-4">
+  <nav class="navbar navbar-dark bg-primary">
+    <h1 class="text-white">Profile</h1>
+  </nav>
+  <div class="container-fluid">
+    <div class="container-fluid form-group row mt-4 mb-4 text-white">
+
+      <a class="btn btn-success text-white col-sm-4"
+         routerLink="/home">Home</a>
+
+      <a *ngIf="type === 'Admin'"
+         class="btn btn-dark text-white col-sm-4"
+         routerLink="/admin">Admin Page</a>
+      <label *ngIf="type !== 'Admin'" class="col-sm-4 col-form-label"></label>
+
+      <a (click)="logout()"
+         class="btn btn-danger text-white col-sm-4">Logout</a>
+    </div>
+
+  <div class="container-fluid">
+    <form>
+      <div class="form-group row">
+        <label for="usernameId" class="col-sm-2 col-form-label">
+          Username </label>
+        <div class="col-sm-10">
+          <input [(ngModel)]="username"
+                 name="n_username"
+                 id="usernameId"
+                 placeholder="Alice"
+                 class="form-control"/>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="firstNameId" class="col-sm-2 col-form-label">
+          First name </label>
+        <div class="col-sm-10">
+          <input [(ngModel)]="firstName"
+                 name="n_firstname"
+                 id="firstNameId"
+                 placeholder="Alicia"
+                 class="form-control"/>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="lastNameId" class="col-sm-2 col-form-label">
+          Last name </label>
+        <div class="col-sm-10">
+          <input [(ngModel)]="lastName"
+                 name="n_lastname"
+                 id="lastNameId"
+                 placeholder="Wonderland"
+                 class="form-control"/>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="emailId" class="col-sm-2 col-form-label">
+          Email address </label>
+        <div class="col-sm-10">
+          <input [(ngModel)]="email"
+                 name="n_email"
+                 id="emailId"
+                 placeholder="alice@wonderland.com"
+                 class="form-control"/>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="phoneId" class="col-sm-2 col-form-label">
+          Phone </label>
+        <div class="col-sm-10">
+          <input [(ngModel)]="phone"
+                 name="n_phone"
+                 id="phoneId"
+                 placeholder="1112223333"
+                 class="form-control"/>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="addressId" class="col-sm-2 col-form-label">
+          Address </label>
+        <div class="col-sm-10">
+          <input [(ngModel)]="address"
+                 name="n_address"
+                 id="addressId"
+                 placeholder="221B Baker St."
+                 class="form-control"/>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <button (click)="update()"
+                class="btn btn-primary btn-block">
+          Update
+        </button>
+      </div>
+
+      <div *ngIf="type === 'Student'">
+        <h2>Sections ({{sectionEnrolled.length}})</h2>
+
+        <ul class="list-group">
+          <li *ngFor="let section of sectionEnrolled"
+              class="list-group-item border border-primary bg-light mb-1">
+            <div class="row container-fluid">
+              <table class="table-no-border table-sm col-9">
+                <tbody>
+                <tr>
+                  <th scope="row">Course:</th>
+                  <td>{{section.courseName}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Section:</th>
+                  <td>{{section.sectionName}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Seats left:</th>
+                  <td>{{section.sectionSeats}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Grade:</th>
+                  <td>{{section.grade}}</td>
+                </tr>
+                </tbody>
+              </table>
+              <div class="col-3 p-2">
+                <button (click)="unenroll(section.sectionId, section.enrollmentId)"
+                        class="float-right btn-lg btn btn-outline-danger">Unenroll
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </form>
+  </div>
+
+
+</div>

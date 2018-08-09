@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <h1>Login</h1>
+
+  <input [(ngModel)]="username"
+         placeholder="Enter Username"
+         class="form-control"/>
+  <input [(ngModel)]="password"
+         placeholder="Enter Password"
+         class="form-control"/>
+  <button (click)="login(username, password)"
+          class="btn btn-success mt-2 btn-block">
+    Login
+  </button>
+
+  <div class="container-fluid">
+    <div class="row mt-2 text-white">
+      <a routerLink="/register"
+         class="btn btn-outline-primary col-sm-5">Register</a>
+      <label class="col-sm-2 col-form-label"></label>
+      <a routerLink="/home"
+         class="btn btn-outline-primary col-sm-5 pull-right">Home</a>
+    </div>
+  </div>
+
+</div>
+

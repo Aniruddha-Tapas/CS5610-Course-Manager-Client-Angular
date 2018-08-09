@@ -1,0 +1,96 @@
+<div class="mb-4">
+  <nav class="navbar navbar-dark bg-dark">
+    <h1 class="text-white">Administrator</h1>
+  </nav>
+  <div class="container-fluid">
+    <div class="container-fluid form-group row mt-4 mb-4 text-white">
+      <a class="btn btn-outline-primary col-sm-5"
+         routerLink="/home">Home</a>
+
+      <label class="col-sm-2 col-form-label"></label>
+
+      <a class="btn btn-outline-primary col-sm-5"
+         routerLink="/profile">Profile</a>
+    </div>
+
+  <div class="row">
+    <div class="col-3">
+      <ul class="list-group">
+        <li class="list-group-item bg-dark  active">Courses</li>
+        <li *ngFor="let course of courses"
+            class="list-group-item">
+          <h5 class="mb-3">{{course.title}}</h5>
+          <button (click)="loadSections(course.id)"
+                  class="btn btn-block btn-info">
+            Sections
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="col-9">
+
+      <ul class="list-group">
+        <li class="list-group-item bg-dark active">Section</li>
+        <li class="list-group-item" *ngIf="clicked === true">
+          <div>
+            <form>
+              <div class="form-group row">
+                <label for="sectionNameId"
+                       class="col-sm-2 col-form-label">
+                  Section name: </label>
+                <div class="col-sm-10">
+                  <input [(ngModel)]="sectionName"
+                         name="n_sectionName"
+                         id="sectionNameId"
+                         placeholder="Enter Section Name"
+                         class="form-control"/>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="seatsId"
+                       class="col-sm-2 col-form-label">
+                  Seats available: </label>
+                <div class="col-sm-10">
+                  <input [(ngModel)]="seats"
+                         name="n_seats"
+                         id="seatsId"
+                         placeholder="No. of available seats"
+                         class="form-control"/>
+                </div>
+              </div>
+
+            <button (click)="createSection(sectionName, seats)"
+                    class="btn btn-success btn-block">
+              Add Section
+            </button>
+            </form>
+          </div>
+        </li>
+        <li *ngFor="let section of sections"
+            class="list-group-item">
+          <div class="row container-fluid">
+            <table class="table-no-border table-sm col-9">
+              <tbody>
+              <tr class="row">
+                <th scope="row" class="col-2">Name:</th>
+                <td class="col-2">{{section.name}}</td>
+                <th scope="row" class="col-2">Seats Left: </th>
+                <td class="col-2">{{section.seats}}</td>
+              </tr>
+              </tbody>
+            </table>
+            <div class="col-3 p-2">
+              <button (click)="updateSection(section._id, sectionName, seats)"
+                      class="float-right btn btn-outline-secondary">Update</button>
+              <button (click)="populate(section)"
+                      class="float-right btn btn-outline-primary">Edit</button>
+              <button (click)="deleteSection(section)"
+                      class="float-right btn btn-outline-danger">Delete</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="container-fluid form-group row mt-4 mb-4 text-white">
+  <a *ngIf="anonymous === true"
+     class="btn btn-outline-success col-sm-5"
+     routerLink="/login">Login</a>
+
+  <a *ngIf="anonymous === false"
+     class="btn btn-success col-sm-5 text-white"
+     routerLink="/profile">Profile</a>
+
+  <label class="col-sm-2 col-form-label"></label>
+
+
+  <a *ngIf="anonymous === true"
+     class="btn btn-outline-success col-sm-5"
+     routerLink="/register">Register</a>
+
+  <a *ngIf="anonymous === false"
+     class="btn btn-danger col-sm-5 text-white"
+     (click)="logout()">Logout</a>
+</div>
+
+
+<div class=" mb-4 " *ngIf="type === 'Student'">
+  <h2>Courses enrolled in:</h2>
+
+  <ul class="list-group">
+    <li *ngFor="let section of sectionEnrolled"
+        class="list-group-item border border-primary bg-light mb-1">
+      <table class="table-no-border table-sm">
+        <tbody>
+        <tr>
+          <th scope="row">Course:</th>
+          <td>{{section.courseName}} </td>
+        </tr>
+        <tr>
+          <th scope="row">Section:</th>
+          <td>{{section.sectionName}} </td>
+        </tr>
+        <tr>
+          <th scope="row">Seats left:</th>
+          <td>{{section.sectionSeats}} </td>
+        </tr>
+        <tr>
+          <th scope="row">Grade:</th>
+          <td>{{section.grade}} </td>
+        </tr>
+        </tbody>
+      </table>
+    </li>
+  </ul>
+</div>
+
+<h2>Course Grid ({{courses.length}})</h2>
+
+<div class="row">
+  <div *ngFor="let course of courses" class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">
+          {{course.title}}
+        </h5>
+        <div class="row">
+          <a routerLink="/course/{{course.id}}"
+             class="btn btn-block btn-info m-2">
+            View Course
+          </a>
+          <a routerLink="/course/{{course.id}}/section"
+             class="btn btn-block btn-info m-2"
+             *ngIf="anonymous === false">
+            View Sections
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

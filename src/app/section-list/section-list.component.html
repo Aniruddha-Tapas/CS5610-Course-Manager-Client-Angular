@@ -1,0 +1,42 @@
+<div class="mb-4">
+  <nav class="navbar navbar-dark bg-primary">
+    <h1 class="text-white">Sections</h1>
+  </nav>
+  <div class="container-fluid">
+    <div class="container-fluid form-group row mt-4 mb-4 text-white">
+      <a class="btn btn-outline-success col-sm-5"
+         routerLink="/home">Home</a>
+
+      <label class="col-sm-2 col-form-label"></label>
+
+      <a class="btn btn-outline-success col-sm-5"
+         routerLink="/profile">Profile</a>
+    </div>
+
+    <h2>Sections for course: {{courseId}}</h2>
+    <ul class="list-group">
+      <li *ngFor="let section of sections"
+          class="list-group-item border border-primary bg-light mb-1">
+        <div class="row container-fluid">
+          <table class="table-no-border table-sm col-9 p-1">
+            <tbody>
+            <tr>
+              <th scope="row">Section name:</th>
+              <td>{{section.name}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Section seats</th>
+              <td>{{section.seats}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <button (click)="enroll(section)"
+                  *ngIf="type === 'Student'"
+                  class="float-right btn-lg btn btn-outline-primary col-3">Enroll
+          </button>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</div>

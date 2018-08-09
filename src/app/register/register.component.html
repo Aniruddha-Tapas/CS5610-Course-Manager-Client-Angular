@@ -1,0 +1,87 @@
+<div class="container-fluid">
+  <h1>Register</h1>
+
+
+  <div class="container-fluid">
+    <form>
+      <div class="form-group row">
+        <label for="usernameId"
+               class="col-sm-2 col-form-label">
+          Username
+        </label>
+        <div class="col-sm-10">
+          <input [(ngModel)]="username"
+                 name="n_username"
+                 id="usernameId"
+                 placeholder="Alice"
+                 class="form-control"/>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="passwordId"
+               class="col-sm-2 col-form-label">
+          Password
+        </label>
+        <div class="col-sm-10">
+          <input [(ngModel)]="password"
+                 name="n_password"
+                 id="passwordId"
+                 placeholder="Alice123"
+                 class="form-control"/>
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label for="password2Id"
+               class="col-sm-2 col-form-label">
+          Verify Password
+        </label>
+        <div class="col-sm-10">
+          <input [(ngModel)]="password2"
+                 name="n_password2"
+                 id="password2Id"
+                 placeholder="Alice123"
+                 class="form-control"/>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="userType" class="col-sm-2 col-form-label">
+          Select User Type </label>
+        <div class="col-sm-10">
+
+          <select class="form-control"
+                  [(ngModel)]="type"
+                  name="n_usertype"
+                  id="userType">
+            <option>
+              Student
+            </option>
+            <option>
+              Admin
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <button (click)="register(username, password, password2, type)"
+                class="btn btn-success btn-block">
+          Register
+        </button>
+      </div>
+
+      <div class="form-group row mt-2 text-white">
+        <a routerLink="/login"
+           class="btn btn-outline-primary col-sm-5">Login</a>
+        <label class="col-sm-2 col-form-label"></label>
+        <a routerLink="/home"
+           class="btn btn-outline-primary col-sm-5 pull-right">Home</a>
+      </div>
+
+    </form>
+  </div>
+
+</div>
