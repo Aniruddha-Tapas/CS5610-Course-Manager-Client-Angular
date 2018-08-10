@@ -2,6 +2,23 @@ export class SectionServiceClient {
 
   SECTION_URL = 'https://cs5610-whiteboard-server-node.herokuapp.com/api/course/COURSEID/section';
 
+  createSection(courseId, name, seats) {
+    const section = {courseId, name, seats};
+    return fetch(this.SECTION_URL.replace('COURSEID', courseId), {
+      method: 'post',
+      body: JSON.stringify(section),
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  }
+
+  findSectionsForCourse(courseId) {
+    return fetch(this.SECTION_URL.replace('COURSEID', courseId))
+      .then(response => response.json());
+  }
+
   findSectionsForStudent() {
     const url = 'https://cs5610-whiteboard-server-node.herokuapp.com/api/student/section';
     return fetch(url, {
@@ -18,30 +35,18 @@ export class SectionServiceClient {
     });
   }
 
-  unEnrollStudent(sectionId, enrollmentId){
+  unEnrollStudent(sectionId, enrollmentId) {
     const url = 'https://cs5610-whiteboard-server-node.herokuapp.com/api/section/' + sectionId + '/enrollment/' + enrollmentId;
     return fetch(url, {
       method: 'delete'
     });
   }
 
-  findSectionsForCourse(courseId) {
-    return fetch(this.SECTION_URL.replace('COURSEID', courseId))
-      .then(response => response.json());
-  }
-
-  deleteSection(sectionId) {
-    const url = 'https://cs5610-whiteboard-server-node.herokuapp.com/api/section/' + sectionId;
-    return fetch(url, {
-      method: 'delete'
-    });
-  }
-
-  updateSection(sectionId, sectionName, seats){
+  updateSection(sectionId, sectionName, seats) {
     const newSection = {
       name: sectionName,
       seats: seats
-    }
+    };
     const url = 'https://cs5610-whiteboard-server-node.herokuapp.com/api/section/' + sectionId;
     return fetch(url, {
       method: 'put',
@@ -52,15 +57,12 @@ export class SectionServiceClient {
     });
   }
 
-  createSection(courseId, name, seats) {
-    const section = {courseId, name, seats};
-    return fetch(this.SECTION_URL.replace('COURSEID', courseId), {
-      method: 'post',
-      body: JSON.stringify(section),
-      credentials: 'include',
-      headers: {
-        'content-type': 'application/json'
-      }
+
+  deleteSection(sectionId) {
+    const url = 'https://cs5610-whiteboard-server-node.herokuapp.com/api/section/' + sectionId;
+    return fetch(url, {
+      method: 'delete'
     });
   }
+
 }

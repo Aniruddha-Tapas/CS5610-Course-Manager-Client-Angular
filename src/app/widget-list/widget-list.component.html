@@ -1,5 +1,5 @@
 <div *ngFor="let widget of widgets"
-      class="m-2">
+     class="m-2">
   <div class="list-group" [ngSwitch]="widget.widgetType">
     <div class="list-group-item" *ngSwitchCase="'Heading'">
       <div [ngSwitch]="widget.size">

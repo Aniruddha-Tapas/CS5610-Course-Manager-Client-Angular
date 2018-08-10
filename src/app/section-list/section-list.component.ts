@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {SectionServiceClient} from "../services/section.service.client";
 import {CourseServiceClient} from "../services/course.service.client";
@@ -16,7 +16,7 @@ export class SectionListComponent implements OnInit {
               private userService: UserServiceClient,
               private router: Router,
               private route: ActivatedRoute) {
-    this.route.params.subscribe(params => this.loadSections(params['courseId']))
+    this.route.params.subscribe(params => this.loadSections(params['courseId']));
   }
 
   sectionName = '';
@@ -33,11 +33,9 @@ export class SectionListComponent implements OnInit {
   }
 
   enroll(section) {
-    // alert(section._id);
-    if (section.seats == 0) {
-      alert("No seats available");
-    }
-    else {
+    if (section.seats === 0) {
+      alert('No seats available!');
+    } else {
       this.service
         .enrollStudentInSection(section._id)
         .then(() => {
@@ -45,8 +43,6 @@ export class SectionListComponent implements OnInit {
         });
     }
   }
-
-
 
   ngOnInit() {
     this.userService

@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {User} from "../models/user.model.client";
-import {UserServiceClient} from "../services/user.service.client";
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {UserServiceClient} from "../services/user.service.client";
 import {SectionServiceClient} from "../services/section.service.client";
 import {Course} from "../models/course.model.client";
 import {CourseServiceClient} from "../services/course.service.client";
@@ -66,10 +65,6 @@ export class ProfileComponent implements OnInit {
         this.address = user.address;
         this.type = user.type;
       });
-
-    // this.courseService.findAllCourses()
-    //   .then(courses => this.courses = courses);
-
     this.sectionService
       .findSectionsForStudent()
       .then(sections => {
@@ -77,7 +72,6 @@ export class ProfileComponent implements OnInit {
         this.courseService.findAllCourses()
           .then(courses => this.courses = courses)
           .then(() => {
-            // this.sectionEnrolled = new Array(this.sections.length);
             for (const i in this.sections) {
               for (const j in this.courses) {
                 if (this.sections[i].section.courseId === this.courses[j].id) {

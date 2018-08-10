@@ -11,5 +11,4 @@ export class WhiteBoardComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

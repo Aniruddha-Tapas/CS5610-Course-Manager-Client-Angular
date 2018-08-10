@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
-import {UserServiceClient} from "../services/user.service.client";
+import { Router } from "@angular/router";
+import { UserServiceClient } from "../services/user.service.client";
 
 @Component({
   selector: 'app-register',
@@ -17,14 +17,12 @@ export class RegisterComponent implements OnInit {
   password2;
   type = 'Student';
   register(username, password, password2, type) {
-    console.log("register", username, password, password2, type);
     this.service
       .createUser(username, password, type)
       .then((response) => {
         if (response.status === 500) {
-          alert("User already exist");
-        }
-        else {
+          alert('Username already exists. Please choose another one!');
+        } else {
           this.router.navigate(['profile']);
         }
       });
@@ -32,5 +30,4 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

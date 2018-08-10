@@ -13,8 +13,7 @@ export class LessonTabsComponent implements OnInit {
               private route: ActivatedRoute) {
     this.route.params.subscribe(
       params => {
-        this.setParams(params)
-        console.log("LessonTabsComponent Params", params);
+        this.setParams(params);
       });
   }
 
