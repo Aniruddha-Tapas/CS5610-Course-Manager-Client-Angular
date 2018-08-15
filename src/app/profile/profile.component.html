@@ -98,6 +98,14 @@
           </button>
         </div>
 
+
+        <div class="form-group row">
+          <button routerLink="/quiz"
+                  class="btn btn-outline-info btn-block">
+            Quiz
+          </button>
+        </div>
+
         <div *ngIf="type === 'Student'">
           <h2>Sections ({{sectionEnrolled.length}})</h2>
 
@@ -136,6 +144,8 @@
         </div>
 
       </form>
+
+
     </div>
   </div>
 </div>
