@@ -1,3 +1,6 @@
+// const NODE_SERVER_URL = 'https://cs5610-whiteboard-server-node.herokuapp.com/';
+const NODE_SERVER_URL = 'http://localhost:3000/';
+
 export class UserServiceClient {
 
   createUser(username, password, type) {
@@ -6,7 +9,7 @@ export class UserServiceClient {
       password: password,
       type: type
     };
-    return fetch('https://cs5610-whiteboard-server-node.herokuapp.com/api/user', {
+    return fetch(NODE_SERVER_URL + 'api/user', {
       body: JSON.stringify(user),
       credentials: 'include', // include, same-origin, *omit
       method: 'post',
@@ -17,7 +20,7 @@ export class UserServiceClient {
   }
 
   findUserById(userId) {
-    return fetch('https://cs5610-whiteboard-server-node.herokuapp.com/api/user/' + userId)
+    return fetch(NODE_SERVER_URL + 'api/user/' + userId)
       .then(response => response.json());
   }
 
@@ -26,7 +29,7 @@ export class UserServiceClient {
       username: username,
       password: password
     };
-    return fetch('https://cs5610-whiteboard-server-node.herokuapp.com/api/login', {
+    return fetch(NODE_SERVER_URL + 'api/login', {
       method: 'post',
       body: JSON.stringify(credentials),
       credentials: 'include',
@@ -37,22 +40,23 @@ export class UserServiceClient {
   }
 
   logout() {
-    return fetch('https://cs5610-whiteboard-server-node.herokuapp.com/api/logout', {
+    return fetch(NODE_SERVER_URL + 'api/logout', {
       method: 'post',
       credentials: 'include'
     });
   }
 
   profile() {
-    return fetch('https://cs5610-whiteboard-server-node.herokuapp.com/api/profile',
+    return fetch(NODE_SERVER_URL + 'api/profile',
       {
         credentials: 'include', // include, same-origin, *omit
       })
       .then(response => {
-        if (response.status === 200)
+        if (response.status === 200) {
           return response.json();
-        else
+        } else {
           return response;
+        }
       });
   }
 
@@ -65,7 +69,7 @@ export class UserServiceClient {
       phone: phone,
       address: address
     };
-    return fetch('https://cs5610-whiteboard-server-node.herokuapp.com/api/update', {
+    return fetch(NODE_SERVER_URL + 'api/update', {
       method: 'put',
       body: JSON.stringify(newUser),
       credentials: 'include',

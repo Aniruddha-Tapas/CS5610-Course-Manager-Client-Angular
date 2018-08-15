@@ -1,6 +1,9 @@
+// const NODE_SERVER_URL = 'https://cs5610-whiteboard-server-node.herokuapp.com/';
+const NODE_SERVER_URL = 'http://localhost:3000/';
+
 export class SectionServiceClient {
 
-  SECTION_URL = 'https://cs5610-whiteboard-server-node.herokuapp.com/api/course/COURSEID/section';
+  SECTION_URL = NODE_SERVER_URL + 'api/course/COURSEID/section';
 
   createSection(courseId, name, seats) {
     const section = {courseId, name, seats};
@@ -20,7 +23,7 @@ export class SectionServiceClient {
   }
 
   findSectionsForStudent() {
-    const url = 'https://cs5610-whiteboard-server-node.herokuapp.com/api/student/section';
+    const url = NODE_SERVER_URL + 'api/student/section';
     return fetch(url, {
       credentials: 'include'
     })
@@ -28,7 +31,7 @@ export class SectionServiceClient {
   }
 
   enrollStudentInSection(sectionId) {
-    const url = 'https://cs5610-whiteboard-server-node.herokuapp.com/api/section/' + sectionId + '/enrollment';
+    const url = NODE_SERVER_URL + 'api/section/' + sectionId + '/enrollment';
     return fetch(url, {
       method: 'post',
       credentials: 'include'
@@ -36,7 +39,7 @@ export class SectionServiceClient {
   }
 
   unEnrollStudent(sectionId, enrollmentId) {
-    const url = 'https://cs5610-whiteboard-server-node.herokuapp.com/api/section/' + sectionId + '/enrollment/' + enrollmentId;
+    const url = NODE_SERVER_URL + 'api/section/' + sectionId + '/enrollment/' + enrollmentId;
     return fetch(url, {
       method: 'delete'
     });
@@ -47,7 +50,7 @@ export class SectionServiceClient {
       name: sectionName,
       seats: seats
     };
-    const url = 'https://cs5610-whiteboard-server-node.herokuapp.com/api/section/' + sectionId;
+    const url = NODE_SERVER_URL + 'api/section/' + sectionId;
     return fetch(url, {
       method: 'put',
       body: JSON.stringify(newSection),
@@ -59,7 +62,7 @@ export class SectionServiceClient {
 
 
   deleteSection(sectionId) {
-    const url = 'https://cs5610-whiteboard-server-node.herokuapp.com/api/section/' + sectionId;
+    const url = NODE_SERVER_URL + 'api/section/' + sectionId;
     return fetch(url, {
       method: 'delete'
     });
