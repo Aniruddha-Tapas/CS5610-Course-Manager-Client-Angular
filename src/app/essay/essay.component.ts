@@ -7,7 +7,6 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class EssayComponent implements OnInit {
   @Input() question;
-
   constructor() {
   }
 

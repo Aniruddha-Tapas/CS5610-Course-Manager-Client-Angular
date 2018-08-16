@@ -7,7 +7,6 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class TrueFalseComponent implements OnInit {
   @Input() question;
-
   constructor() {
   }
 

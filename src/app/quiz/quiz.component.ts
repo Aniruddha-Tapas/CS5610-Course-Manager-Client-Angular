@@ -16,10 +16,20 @@ export class QuizComponent implements OnInit {
   quizId = '';
   quiz = {title: '', questions: []};
 
+  submitQuiz = quiz =>
+    this.service
+      .submitQuiz(quiz)
+      .then(submission => console.log(submission))
+
+  loadQuestions(quizId) {
+    this.service.findQuizById(quizId)
+      .then(quiz => this.quiz = quiz[0]);
+  }
+
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => this.quizId = params['quizId']);
-    this.service.findQuizById(this.quizId)
-      .then(quiz => this.quiz = quiz);
+    console.log('This', this.quizId);
+    this.loadQuestions(this.quizId);
   }
 
 }

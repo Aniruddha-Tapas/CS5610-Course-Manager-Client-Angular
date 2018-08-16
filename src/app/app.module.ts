@@ -29,6 +29,7 @@ import { EssayComponent } from './essay/essay.component';
 import { TrueFalseComponent } from './true-false/true-false.component';
 import { MultipleChoiceComponent } from './multiple-choice/multiple-choice.component';
 import { FillBlankComponent } from './fill-blank/fill-blank.component';
+import { QuizSubmissionsComponent } from './quiz-submissions/quiz-submissions.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { FillBlankComponent } from './fill-blank/fill-blank.component';
     EssayComponent,
     TrueFalseComponent,
     MultipleChoiceComponent,
-    FillBlankComponent
+    FillBlankComponent,
+    QuizSubmissionsComponent
   ],
   imports: [
     BrowserModule,
