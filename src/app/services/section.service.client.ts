@@ -1,5 +1,5 @@
-// const NODE_SERVER_URL = 'https://cs5610-whiteboard-server-node.herokuapp.com/';
-const NODE_SERVER_URL = 'http://localhost:3000/';
+const NODE_SERVER_URL = 'https://cs5610-whiteboard-server-node.herokuapp.com/';
+// const NODE_SERVER_URL = 'http://localhost:3000/';
 
 export class SectionServiceClient {
 
