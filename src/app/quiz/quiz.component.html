@@ -12,7 +12,8 @@
   <h2>{{quiz.title}}</h2>
 
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let question of quiz.questions">
+    <li class="list-group-item"
+        *ngFor="let question of quiz.questions">
       <h4>
         {{question.title}}
         <span class="float-right">{{question.points}}</span>
@@ -36,9 +37,13 @@
   </ul>
   <div>
     <button class="btn btn-primary float-right"
-            (click)="submitQuiz(quiz)">Submit</button>
+            (click)="submitQuiz(quiz)">
+      Submit
+    </button>
 
-    <a class="btn btn-danger float-right" href="/quiz">Cancel</a>
+    <button class="btn btn-danger float-right" href="/quiz">
+      Cancel
+    </button>
   </div>
 
 </div>

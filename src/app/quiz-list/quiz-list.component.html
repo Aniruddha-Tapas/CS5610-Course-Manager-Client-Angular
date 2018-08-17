@@ -4,15 +4,30 @@
       <h3 class="text-white">White Board</h3>
     </div>
     <div class="col-sm-3 row">
-      <a routerLink="/home" class="text-white mt-2">Home</a> &nbsp;&nbsp;<a routerLink="/profile" class="text-white mt-2 ml-3">Profile</a>
+      <a routerLink="/home"
+         class="text-white mt-2">
+        Home
+      </a>
+      <a routerLink="/profile"
+         class="text-white mt-2 ml-3">
+        Profile
+      </a>
     </div>
   </div>
   <ul class="list-group">
     <li class="list-group-item"
         *ngFor="let quiz of quizzes">
-      {{quiz.title}}
-      <a class="btn btn-success float-right" href="/quiz/{{quiz._id}}">Take</a>
-      <a class="btn btn-primary float-right mr-3" href="/quiz/{{quiz._id}}/submissions">Submissions</a>
+      <h5>{{quiz.title}}</h5>
+      <a class="btn btn-success float-right m-1"
+         href="/quiz/{{quiz._id}}"
+         *ngIf="currentUser.username !== undefined && currentUser.username.localeCompare('admin') !== 0">
+        Take Quiz
+      </a>
+      <a class="btn btn-info float-right m-1"
+         href="/quiz/{{quiz._id}}/submissions"
+         *ngIf="currentUser.username !== undefined">
+        View Submissions
+      </a>
     </li>
   </ul>
 </div>

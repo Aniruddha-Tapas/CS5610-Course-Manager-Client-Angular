@@ -1,0 +1,72 @@
+<div class="container-fluid">
+  <div class="row bg-primary mb-4 p-3">
+    <div class="col-sm-9">
+      <h3 class="text-white">White Board</h3>
+    </div>
+    <div class="col-sm-3 row">
+      <a routerLink="/home" class="text-white mt-2">Home</a>
+      <a routerLink="/profile" class="text-white mt-2 ml-3">Profile</a>
+    </div>
+  </div>
+  <h3>Answers for {{quiz.title}}</h3>
+  <ul class="list-group">
+    <li *ngFor="let answer of answers" class="list-group-item border border-secondary mb-2">
+      <h4>
+        {{answer.question.title}}
+        <div class="float-right">Maximum points: {{answer.question.points}}</div>
+      </h4>
+      <p>{{answer.question.description}}</p>
+
+      <div [ngSwitch]="answer.question.questionType">
+        <div *ngSwitchCase="'MULTIPLE_CHOICE'">
+          <app-multiple-choice [question]="answer.question"></app-multiple-choice>
+          <br/>
+          <h4 class="row ml-2">
+            Your answer:
+            <div class="ml-2"
+                 [ngSwitch]="answer.multipleChoiceAnswer">
+              <div *ngSwitchCase="0">Choice A</div>
+              <div *ngSwitchCase="1">Choice B</div>
+              <div *ngSwitchCase="2">Choice C</div>
+              <div *ngSwitchCase="3">Choice D</div>
+            </div>
+          </h4>
+          <h4 class="row ml-2">
+            Correct answer:
+            <div class="ml-2"
+                 [ngSwitch]="answer.correct_answer">
+              <div *ngSwitchCase="0">Choice A</div>
+              <div *ngSwitchCase="1">Choice B</div>
+              <div *ngSwitchCase="2">Choice C</div>
+              <div *ngSwitchCase="3">Choice D</div>
+            </div>
+          </h4>
+        </div>
+        <div *ngSwitchCase="'FILL_BLANK'">
+          <app-fill-blank [question]="answer.question"></app-fill-blank>
+          <br/>
+          <h4>Your answer: {{answer.fillBlanksAnswer[0].variable1}}, {{answer.fillBlanksAnswer[0].variable2}}</h4>
+          <h4>Correct answer: {{answer.correct_answer[0].variable1}}, {{answer.correct_answer[0].variable2}}</h4>
+        </div>
+        <div *ngSwitchCase="'TRUE_FALSE'">
+          <app-true-false [question]="answer.question"></app-true-false>
+          <br/>
+          <h4>Your answer: {{answer.trueFalseAnswer}}</h4>
+          <h4>Correct answer: {{answer.correct_answer}}</h4>
+        </div>
+        <div *ngSwitchCase="'ESSAY'">
+          <app-essay [question]="answer.question"></app-essay>
+          <br/>
+          <h4>Your answer: {{answer.essayAnswer}}</h4>
+          <h4>Correct answer: {{answer.correct_answer}}</h4>
+        </div>
+      </div>
+      <h4>
+        <div class="float-right">You scored: {{answer.grade}}</div>
+      </h4>
+    </li>
+  </ul>
+  <div class="row bg-success mt-2 p-3">
+    <h3 class="text-white float-right">Total points scored: {{totalPoints}}</h3>
+  </div>
+</div>

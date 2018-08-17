@@ -1,5 +1,11 @@
 <ul class="list-group">
-  <li class="list-group-item" *ngFor="let choice of question.choices">
-    <input name="{{question._id}}" type="radio" (click)="MCQAnswer(choice)">{{choice.text}}
+  <li class="list-group-item"
+      *ngFor="let choice of question.choices">
+    <label>
+      <input name="{{question._id}}"
+             type="radio"
+             (click)="MCQAnswer(choice)">
+      {{choice.text}}
+    </label>
   </li>
 </ul>

@@ -8,7 +8,7 @@ export class QuizServiceClient {
 
   findAllQuizzes = () =>
     fetch(NODE_SERVER_URL + 'api/quiz')
-      .then(response => response.json())
+      .then(response => response.json());
 
   createQuiz = quiz =>
     fetch(NODE_SERVER_URL + 'api/quiz', {
@@ -18,11 +18,11 @@ export class QuizServiceClient {
         'content-type': 'application/json'
       }
     })
-      .then(response => response.json())
+      .then(response => response.json());
 
   findQuizById = quizId =>
     fetch(NODE_SERVER_URL + 'api/quiz/' + quizId)
-      .then(response => response.json())
+      .then(response => response.json());
 
   submitQuiz = quiz =>
     fetch(NODE_SERVER_URL + 'api/quiz/' + quiz._id + '/submission', {
@@ -33,18 +33,24 @@ export class QuizServiceClient {
         'content-type': 'application/json'
       }
     })
-      .then(response => response.json())
+      .then(response => response.json());
 
-  findSubmissionsForStudent = quizId =>
-    fetch(NODE_SERVER_URL + 'api/quiz/' + quizId + '/submission', {
+  findSubmissionsForStudent = (quizId, sid) =>
+    fetch(NODE_SERVER_URL + 'api/quiz/' + quizId + '/student/' + sid + '/submission', {
       credentials: 'include'
     })
-      .then(response => response.json())
+      .then(response => response.json());
 
-  findSubmissionById = (submissionId, quizId) =>
+  findSubmissionById = (quizId, submissionId) =>
     fetch(NODE_SERVER_URL + 'api/quiz/' + quizId + '/submission/' + submissionId, {
       credentials: 'include'
     })
-      .then(response => response.json())
+      .then(response => response.json());
+
+
+  findAllSubmissionsForQuiz = quizId =>
+    fetch(NODE_SERVER_URL + '/api/quiz/' + quizId + '/submission', {
+      credentials: 'include'
+    }).then(res => res.json());
 
 }

@@ -8,32 +8,28 @@
       <a routerLink="/profile" class="text-white mt-2 ml-3">Profile</a>
     </div>
   </div>
-  <div class="row mt-2">
-    <div class="col-3">
-      <ul class="list-group">
-        <li class="list-group-item">
-          <h4>{{submissions[0].quiz.title}}</h4>
-        </li>
-        <li *ngFor="let submission of submissions; let i = index"
-            [attr.data-index]="i"
-            (click)="showSubmission(submission._id)"
-            class="list-group-item">
-          Attempt {{i+1}} - {{submission._id}}
-        </li>
-      </ul>
-    </div>
-    <div class="col-9">
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let qa of questionAnswer">
-          <h4>{{qa.question.description}}</h4>
-          <p class="float-right">{{qa.scoredPoints}}/{{qa.totalPoints}}</p>
-          <br/>
-          <h6>Your Answer: {{qa.userAnswer}}</h6>
-          <br/>
-          <h6>Correct Answer: {{qa.correctAnswer}}</h6>
-        </li>
-      </ul>
-      <h4 class="float-right">Total Score: {{finalStudentScore}}/{{finalQuizScore}}</h4>
-    </div>
+  <input class="form-control mb-4"
+         (ngModelChange)="filterResults($event)"
+         [(ngModel)]="search" placeholder="Search username"/>
+
+  <div class="container-fluid">
+    <ul class="list-group">
+      <li class="head row">
+        <div class="col-lg-3 font-weight-bold">Username</div>
+        <div class="col-lg-3 font-weight-bold">Quiz Name</div>
+        <div class="col-lg-3 font-weight-bold">Submission Time</div>
+        <div class="col-lg-3 font-weight-bold">Quiz Answers</div>
+      </li>
+      <li class="row " *ngFor="let submission of sub">
+        <div class="col-lg-3">{{submission.student.username}}</div>
+        <div class="col-lg-3">{{submission.quiz.title}}</div>
+        <div class="col-lg-3" *ngIf="submission.timestamp === undefined"></div>
+        <div class="col-lg-3" *ngIf="submission.timestamp !== undefined">{{submission.timestamp.toString().substr(0,
+          10)}}
+          Time: {{submission.timestamp.toString().substr(11, 8)}}
+        </div>
+        <div class="col-lg-3"><a routerLink="{{submission._id}}/answers">Answers</a></div>
+      </li>
+    </ul>
   </div>
 </div>
